@@ -26,9 +26,9 @@ export const ChatMessageInput = ({ disabled, onSend }: Props) => {
   };
 
   const handleSendMessage = () => {
-    if (!disabled && text.trim() !== " ") {
+    if (!disabled && text.trim() !== "") {
       onSend(text);
-      setText(" ");
+      setText("");
     }
   };
   return (

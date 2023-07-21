@@ -54,17 +54,19 @@ const Page = () => {
       const response = await Openai.generate(
         Openai.translateMessages(chatListClone[chatIndex].messages)
       );
-
+      console.log(response)
       if (response) {
         chatListClone[chatIndex].messages.push({
           id: uuidv4(),
           author: "ai",
           body: response,
         });
+        console.log(response);
       }
     }
     setChatList(chatListClone);
     setAILoading(false);
+    //console.log(setAILoading)
   };
 
   const handleClearConversations = () => {
@@ -110,6 +112,7 @@ const Page = () => {
     }
 
     setAILoading(true);
+    console.log(setAILoading)
   };
 
   const handleSelectChat = (id: string) => {
@@ -136,7 +139,7 @@ const Page = () => {
       setChatList(chatListClone);
     }
   };
-
+  
   return (
     <main className="flex min-h-screen bg-gpt-gray">
       <SideBar
@@ -163,7 +166,7 @@ const Page = () => {
           newChatClick={handleNewChat}
         />
 
-        <ChatArea chat={chatActive} loading={AILoading} />
+        <ChatArea chat={chatActive} loading={AILoading} />        
 
         <Footer onSendMessage={handleSendMessage} disabled={AILoading} />
       </section>
